@@ -4,6 +4,28 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const cssTest = /\.css$/
+const lessTest = /\.less$/
+const cssModuleTest = /\.module\.css$/
+const lessModuleTest = /\.module\.less$/
+const baseCssUse = [
+  MiniCssExtractPlugin.loader, 
+  'css-loader', 
+  'postcss-loader'
+]
+const baseCssModuleUse = [
+  MiniCssExtractPlugin.loader, 
+  {
+    loader: 'css-loader',
+    options: {
+      modules: {
+        localIdentName: "[name]_[local]__[hash:5]"
+      }
+    },
+  }, 
+  'postcss-loader'
+]
+
 module.exports = {
   entry: {
     app: './src/index.js',
@@ -45,12 +67,22 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+        test: cssTest,
+        exclude: cssModuleTest,
+        use: baseCssUse
       },
       {
-        test: /\.less$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader']
+        test: lessTest,
+        exclude: lessModuleTest,
+        use: [...baseCssUse, 'less-loader']
+      },
+      {
+        test: cssModuleTest,
+        use: baseCssModuleUse
+      },
+      {
+        test: lessModuleTest,
+        use: [...baseCssModuleUse, 'less-loader']
       },
       {
         test: /\.(jpe?g|png|gif)$/i,

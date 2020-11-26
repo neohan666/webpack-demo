@@ -1,14 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.less'
 import icon from './icon.png'
+import './index.less'
+import style from './index.module.less'
 
 console.log(VERSION_H5)
 
 function App () {
   return (
     <div>
-      <div className="test">小王子</div>
+      <div className='test'>小王子</div>
+
+      <div className={style.name}>Neo</div>
 
       <div>
         <img src={icon} alt=""/>
