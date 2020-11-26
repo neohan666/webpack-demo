@@ -31,7 +31,8 @@ module.exports = {
     app: './src/index.js',
   },
   output: {
-    filename: 'js/[name].[chunkhash:8].js',
+    filename: 'js/[name].[contenthash:8].js',
+    chunkFilename: 'js/[name].[contenthash:8].js',
     path: path.resolve(__dirname, '../dist'),
   },
   plugins: [
@@ -49,8 +50,8 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[hash:8].css',
-      chunkFilename: 'css/[id].[hash:8].css',
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].css',
       ignoreOrder: true
     }),
     new webpack.DefinePlugin({

@@ -7,7 +7,8 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   output: {
-    filename: 'js/[name].[hash:8].js',
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[name].js',
   },
   devServer: {
     contentBase: path.resolve(__dirname, '../dist'),

@@ -27,5 +27,31 @@ module.exports = merge(common, {
         }
       }),
     ],
+    splitChunks: {
+      chunks: 'all',
+      maxAsyncRequests: 8,
+      maxInitialRequests: 6,
+      minSize: 10000,
+      cacheGroups: {
+        react: {
+          name: 'chunk-react',
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          priority: 20
+        },
+        vendors: {
+          name: 'chunk-vendors',
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          chunks: 'initial'
+        },
+        common: {
+          name: 'chunk-common',
+          minChunks: 2,
+          priority: -20,
+          chunks: 'initial',
+          reuseExistingChunk: true
+        }
+      }
+    }
   },
 })
