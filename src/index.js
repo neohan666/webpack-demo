@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import icon from './icon.png'
-import './index.less'
+import '@/index.less'
 import style from './index.module.less'
 
 console.log(VERSION_H5)

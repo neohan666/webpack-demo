@@ -35,6 +35,11 @@ module.exports = {
     chunkFilename: 'js/[name].[contenthash:8].js',
     path: path.resolve(__dirname, '../dist'),
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../src'),
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
