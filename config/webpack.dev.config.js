@@ -15,6 +15,7 @@ module.exports = merge(common, {
     port: 9000,
     compress: true,
     hot: true,
+    inline: true,
     proxy: {
       '/proxy': { // 代理标识 /proxy，匹配拦截的规则
         target: 'https://192.111:8800', // 目标地址，有端口号

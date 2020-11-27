@@ -11,6 +11,9 @@ import style from './index.module.less'
 
 console.log([1, 2, 3].find(v => v === 2))
 
+console.log(process.env.NODE_ENV)
+console.log(process.env.MY_TYPE)
+
 function App () {
   return (
     <div>

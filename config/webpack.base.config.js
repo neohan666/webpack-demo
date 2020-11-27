@@ -60,7 +60,14 @@ module.exports = {
       ignoreOrder: true
     }),
     new webpack.DefinePlugin({
-      // VERSION_H5: +new Date()
+      // VERSION_H5: +new Date(),
+      'process.env': Object.keys(process.env).reduce(
+        (env, key) => {
+          env[key] = JSON.stringify(process.env[key]);
+          return env;
+        }, 
+        {}
+      )
     }),
   ],
   module: {
