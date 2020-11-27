@@ -60,7 +60,7 @@ module.exports = {
       ignoreOrder: true
     }),
     new webpack.DefinePlugin({
-      VERSION_H5: +new Date()
+      // VERSION_H5: +new Date()
     }),
   ],
   module: {
